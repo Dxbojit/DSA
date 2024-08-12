@@ -1,0 +1,19 @@
+class Solution {
+    public int reverse(int x) {
+        boolean negative=false;
+        if(x<0)
+        negative=true;
+        StringBuilder sb=new StringBuilder(String.valueOf(Math.abs(x)));
+        sb.reverse();
+        int reversed;
+        try
+        {
+            reversed=Integer.parseInt(sb.toString());
+        }
+        catch(NumberFormatException e)
+        {
+            return 0;
+        }
+        return negative?-reversed:reversed;
+    }
+}
