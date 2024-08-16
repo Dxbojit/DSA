@@ -1,0 +1,29 @@
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head==null||head.next==null)
+        return head;
+         ListNode newHead = head.next;  // The new head will be the second node
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while (curr != null && curr.next != null) {
+            ListNode nextPair = curr.next.next;  // Store the start of the next pair
+            ListNode second = curr.next;
+
+            // Swap the current pair
+            second.next = curr;
+            curr.next = nextPair;
+
+            // Connect the previous pair with the current pair
+            if (prev != null) {
+                prev.next = second;
+            }
+
+            // Update pointers for the next iteration
+            prev = curr;
+            curr = nextPair;
+        }
+
+        return newHead;
+    }
+}
